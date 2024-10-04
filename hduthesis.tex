@@ -1,0 +1,132 @@
+% !Mode:: "TeX:UTF-8"
+% !TEX builder = LATEXMK
+% !TEX program = xelatex
+
+\documentclass[master, eng, oneside]{hduthesis}
+% 参数说明：
+%   master          - （该参数无效）硕士论文
+%   oneside/twoside - 选择单面打印还是双面打印
+%   blindreview     - 盲审时填入该参数，用于屏蔽个人信息
+%   nocpsupervisor  - 无合作导师时填入该参数，用于屏蔽合作导师的部分
+%   eng             - 论文使用英文写作时填入该参数
+
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{listofitems}
+\usetikzlibrary{math}
+\usepackage[export]{adjustbox}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{shapes.geometric, arrows}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 开始填写前置部分使用的变量
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 样式设定在 zjuthesis.cls 下, 人类可读，爱请查阅
+
+% 这里写这么鬼畜是为了测试多几个字会不会造成溢出
+\title{语音交互AI在痴呆症护理中的适应性研究} % 封面和题名页使用
+\englishtitle{Adaptive Research on Voice Interaction AI in Dementia Care} % 封面和题名页使用
+% 如果您的标题用字过多，请自行调节 zjuthesis.cls 里的 ZJUmakecover 里的各项距离。
+
+\author{张三}
+\englishauthor{San, Zhang}
+\blindreviewhead{全日制学术型研究生}
+
+\classification{TP311.1}    % 封面头使用
+\serialnumber{10335}        % 封面头使用
+\secretlevel{无}            % 封面头使用
+\studentnumber{200910024}    % 封面头使用
+
+\supervisor{李四}       		 % 导师 封面使用
+\spvtitle{教授}               % 导师职称 封面使用
+\englishsupervisor{Si, Li} % 导师英文名 封面使用
+\englishspvtitle{Professor}  % 导师英文职称 封面使用
+
+%\cpsupervisor{桂和纱}       % 合作导师，如果没有合作导师，就在此文件第 4 行\documentclass选项栏中加上"nocpsupervisor"。
+\cpsupervisor{王五}      %
+\cspvtitle{教授}             % 合作导师职称
+\englishcpsupervisor{Wu, Wang}
+\englishcpvtitle{Professor}           % 合作导师英文职称 封面使用
+
+% 从机械工程学院改来，保留设定变量命名
+\major{计算机科学与技术}        % 专业
+\research{计算机软件与理论}       % 专业学位领域栏 填 软件工程
+\institute{计算机学院}         % 所在学位栏 填 软件学院
+
+\submitdate{2023年5月24日}   % 论文提交日期 栏
+
+\appendixfile{contents/Appendix.\langext}
+
+% 题名页的评阅人及答辩席
+% 归档时候填写
+% 论文评阅人1 2 3 4 5
+\reviewerA{} \enreviewerA{}
+\reviewerB{} \enreviewerB{}
+\reviewerC{} \enreviewerC{}
+\reviewerD{} \enreviewerD{}
+\reviewerE{} \enreviewerE{}
+
+% 答辩委员会主席
+\chairperson{} \enchairperson{}
+
+% 答辩委员 1 2 3 4 5
+\commissionerA{} \encommissionerA{}
+\commissionerB{} \encommissionerB{}
+\commissionerC{} \encommissionerC{}
+\commissionerD{} \encommissionerD{}
+\commissionerE{} \encommissionerE{}
+
+% 答辩日期
+\defencedate{2023年7月} \eendefencedate{July, 2023}
+
+% 论文前置部分变量填写完毕 开始全书排版
+\begin{document}
+
+% 封面、中文题名页、英文题名页、独创声明和版权使用书 无页码
+\maketitle
+
+% 摘要部分
+\abstractmatter
+\include{contents/Abstract.chi}
+\include{contents/Abstract.eng}
+
+% 目录和术语表
+%\frontmatter
+\tableofcontents % 正文目录
+%{
+%\renewcommand{\numberline}[1]{Figure ~#1\hspace*{1em}}
+%\listoffigures
+%}% 图目录
+%{
+%\renewcommand{\numberline}[1]{Table ~#1\hspace*{1em}}
+%\listoftables
+%}% 表目录
+ 
+% 术语及缩略词表(需要则开)
+%\include{contents/denotation}
+
+% 正文排版开始
+\mainmatter
+
+% Universal Version
+\include{contents/1_Introduction.\langext} % 绪论
+\include{contents/2_Related.\langext}
+\include{contents/3_Main.\langext}
+\include{contents/4_Experiment.\langext}
+\include{contents/5_Conclusion.\langext}  % 总结和展望
+
+% 结尾部分排版
+\backmatter
+
+%% 致谢
+\include{contents/Aknowledge}
+
+%% 引用参考文献数据库
+\bibliography{references/references}
+
+%% 附录部分
+\makemyappendix
+
+
+\end{document}
+
+
+
